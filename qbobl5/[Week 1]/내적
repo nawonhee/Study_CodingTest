@@ -1,0 +1,13 @@
+class Solution {
+    public static int mul(int x, int y) {
+        return x*y;
+    }
+    
+    public int solution(int[] a, int[] b) {
+        int cnt=0;
+        for(int i=0;i<a.length;i++) {
+            cnt+=mul(a[i], b[i]);
+        }
+        return cnt;
+    }
+}
