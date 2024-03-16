@@ -1,0 +1,22 @@
+class Solution {
+    public int solution(String[][] board, int h, int w) {
+        int answer = 0;
+        
+        String color = board[h][w];
+        int[] dh = {-1,1,0,0};
+        int[] dw = {0,0,-1,1};
+        
+        for(int i=0;i<4;i++){
+            int h_chk = h+dh[i];
+            int w_chk = w+dw[i];
+            if(h_chk>=0 && w_chk>=0 && h_chk<board.length && w_chk<board[h].length){
+                String this_color = board[h_chk][w_chk];
+                if(this_color.equals(color)){
+                    answer++;
+                }   
+            }
+        }        
+        
+        return answer;
+    }
+}
