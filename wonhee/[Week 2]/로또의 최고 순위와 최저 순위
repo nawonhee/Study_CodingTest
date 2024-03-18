@@ -1,0 +1,28 @@
+class Solution {
+    public int[] solution(int[] lottos, int[] win_nums) {
+        int[] answer = new int[2];
+        int win_cnt = 7;
+        int zero_cnt = 0;
+        
+        for(int i=0;i<6;i++){
+            if(lottos[i] == 0){
+                zero_cnt++;
+            }
+            for(int j=0;j<6;j++){
+                if(win_nums[i] == lottos[j]){
+                    win_cnt--;
+                }
+            }
+        }
+        
+        answer[0] = win_cnt-zero_cnt;
+        answer[1] = win_cnt;
+        
+        for(int i=0;i<2;i++){
+            if(answer[i]==7){
+                answer[i]--;
+            }
+        }
+        return answer;
+    }
+}
