@@ -1,0 +1,27 @@
+class Solution {
+    public static int[] mainNum;
+	public static int targetN;
+	public static int cnt=0;
+	
+	public static void cal(int index, int tmp, boolean type) {
+		if(index<0 || index>mainNum.length) return;
+		
+		if(index==mainNum.length) {
+			if(tmp==targetN) cnt++;
+			if(-tmp==targetN) cnt++;
+			return;
+		} else {
+			if(type) tmp+=mainNum[index];
+			else tmp-=mainNum[index];
+			cal(index+1, tmp, true);
+			if(index!=mainNum.length-1) cal(index+1, tmp, false);
+		}
+    }
+    
+    public int solution(int[] numbers, int target) {
+        mainNum=numbers;
+		targetN=target;
+		cal(0, 0, true);
+        return cnt;
+    }
+}
