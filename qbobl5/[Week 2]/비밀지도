@@ -1,0 +1,38 @@
+class Solution {
+    public int[] binary(int n, int num) {
+		int[] result=new int[n];
+		
+		while(num!=1 && n-1>0) {
+			if(num%2==1) result[n-1]=1;
+			else result[n-1]=0;
+			num/=2;
+			n--;
+		}
+		result[n-1]=1;
+		
+		while(n-1>0) {
+			n--;
+			result[n-1]=0;
+		}
+		
+		return result;
+	}
+    
+    public String[] solution(int n, int[] arr1, int[] arr2) {
+        String[] map=new String[n];
+		
+		for(int i=0;i<n;i++) {
+			int[] s1=binary(n, arr1[i]);
+			int[] s2=binary(n, arr2[i]);
+			
+			String result="";
+			for(int j=0;j<n;j++) {
+				if(s1[j]==0 && s2[j]==0) result+=' ';
+				else result+='#';
+			}
+			map[i]=result;
+		}
+		
+		return map;
+    }
+}
